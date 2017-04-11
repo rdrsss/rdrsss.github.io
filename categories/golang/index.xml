@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on Manuel A. Rodriguez</title>
-    <link>http://rdrsss.io/categories/golang/index.xml</link>
-    <description>Recent content in Golang on Manuel A. Rodriguez</description>
+    <title>Golang on Test Site</title>
+    <link>http://rdrsss.io/categories/golang/</link>
+    <description>Recent content in Golang on Test Site</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en-US</language>
     <copyright>Copyright © 2017 Manuel A. Rodriguez</copyright>
-    <atom:link href="http://rdrsss.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Mar 2017 01:02:27 +0000</lastBuildDate>
+    
+	<atom:link href="http://rdrsss.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>about</title>
@@ -15,8 +18,7 @@
       <pubDate>Fri, 03 Mar 2017 01:02:27 +0000</pubDate>
       
       <guid>http://rdrsss.io/about/</guid>
-      <description>&lt;p&gt;About me.&lt;/p&gt;
-</description>
+      <description>About me.</description>
     </item>
     
     <item>
@@ -25,8 +27,7 @@
       <pubDate>Thu, 02 Mar 2017 00:59:01 +0000</pubDate>
       
       <guid>http://rdrsss.io/post/three/</guid>
-      <description>&lt;p&gt;doing it again&lt;/p&gt;
-</description>
+      <description>doing it again</description>
     </item>
     
     <item>
@@ -35,10 +36,8 @@
       <pubDate>Thu, 02 Mar 2017 00:49:48 +0000</pubDate>
       
       <guid>http://rdrsss.io/post/test-two/</guid>
-      <description>&lt;p&gt;&amp;ldquo;round two&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;what about now?&lt;/p&gt;
-</description>
+      <description>&amp;ldquo;round two&amp;rdquo;
+what about now?</description>
     </item>
     
     <item>
@@ -47,10 +46,8 @@
       <pubDate>Thu, 02 Mar 2017 00:28:14 +0000</pubDate>
       
       <guid>http://rdrsss.io/post/first-post/</guid>
-      <description>&lt;p&gt;First post, this is a test.&lt;/p&gt;
-
-&lt;p&gt;test test&lt;/p&gt;
-</description>
+      <description>First post, this is a test.
+test test</description>
     </item>
     
   </channel>
