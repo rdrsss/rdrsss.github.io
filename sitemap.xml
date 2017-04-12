@@ -27,6 +27,24 @@
   </url>
   
   <url>
+    <loc>http://rdrsss.io/tags/about/</loc>
+    <lastmod>2017-03-03T01:02:27+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://rdrsss.io/categories/about/</loc>
+    <lastmod>2017-03-03T01:02:27+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://rdrsss.io/tags/aboutme/</loc>
+    <lastmod>2017-03-03T01:02:27+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://rdrsss.io/blog/</loc>
     <lastmod>2017-04-12T03:15:06+00:00</lastmod>
     <priority>0</priority>
@@ -34,6 +52,7 @@
   
   <url>
     <loc>http://rdrsss.io/categories/</loc>
+    <lastmod>2017-03-03T01:02:27+00:00</lastmod>
     <priority>0</priority>
   </url>
   

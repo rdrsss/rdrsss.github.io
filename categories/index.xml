@@ -7,9 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2017 Manuel A. Rodriguez</copyright>
+    <lastBuildDate>Fri, 03 Mar 2017 01:02:27 +0000</lastBuildDate>
     
 	<atom:link href="http://rdrsss.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>http://rdrsss.io/categories/about/</link>
+      <pubDate>Fri, 03 Mar 2017 01:02:27 +0000</pubDate>
+      
+      <guid>http://rdrsss.io/categories/about/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Development</title>

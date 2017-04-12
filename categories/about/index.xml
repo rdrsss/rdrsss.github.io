@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Development on Test Site</title>
-    <link>http://rdrsss.io/categories/development/</link>
-    <description>Recent content in Development on Test Site</description>
+    <title>About on Test Site</title>
+    <link>http://rdrsss.io/categories/about/</link>
+    <description>Recent content in About on Test Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2017 Manuel A. Rodriguez</copyright>
     <lastBuildDate>Fri, 03 Mar 2017 01:02:27 +0000</lastBuildDate>
     
-	<atom:link href="http://rdrsss.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://rdrsss.io/categories/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

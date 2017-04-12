@@ -49,12 +49,15 @@
     </item>
     
     <item>
-      <title>about</title>
+      <title></title>
       <link>http://rdrsss.io/about/</link>
       <pubDate>Fri, 03 Mar 2017 01:02:27 +0000</pubDate>
       
       <guid>http://rdrsss.io/about/</guid>
-      <description>About me.</description>
+      <description>My name is Manuel A. Rodriguez, I am a software developer currently working in the games industry. Currently I specialize in back end services development and architecture.
+I love learning new things, and am always looking to learn more. Scratching a curiosity itch is one of my favorite pass times.
+Currently, I work mostly in Go and C++. Dabbling with Rust in my free time.
+My résumé.</description>
     </item>
     
   </channel>
