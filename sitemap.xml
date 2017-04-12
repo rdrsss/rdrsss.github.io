@@ -17,28 +17,8 @@
   </url>
   
   <url>
-    <loc>http://rdrsss.io/posts/index/</loc>
-    <lastmod>2017-03-03T01:25:54+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://rdrsss.io/about/</loc>
     <lastmod>2017-03-03T01:02:27+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://rdrsss.io/post/three/</loc>
-    <lastmod>2017-03-02T00:59:01+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://rdrsss.io/post/test-two/</loc>
-    <lastmod>2017-03-02T00:49:48+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://rdrsss.io/post/first-post/</loc>
-    <lastmod>2017-03-02T00:28:14+00:00</lastmod>
   </url>
   
   <url>
@@ -53,19 +33,13 @@
   </url>
   
   <url>
-    <loc>http://rdrsss.io/tags/development/</loc>
-    <lastmod>2017-03-03T01:02:27+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://rdrsss.io/categories/development/</loc>
     <lastmod>2017-03-03T01:02:27+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://rdrsss.io/tags/golang/</loc>
+    <loc>http://rdrsss.io/tags/development/</loc>
     <lastmod>2017-03-03T01:02:27+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -77,14 +51,8 @@
   </url>
   
   <url>
-    <loc>http://rdrsss.io/post/</loc>
-    <lastmod>2017-03-02T00:59:01+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://rdrsss.io/posts/</loc>
-    <lastmod>2017-03-03T01:25:54+00:00</lastmod>
+    <loc>http://rdrsss.io/tags/golang/</loc>
+    <lastmod>2017-03-03T01:02:27+00:00</lastmod>
     <priority>0</priority>
   </url>
   
