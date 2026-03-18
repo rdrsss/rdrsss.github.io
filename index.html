@@ -1,187 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel — Senior Backend Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #f6f3ee;
-            --surface: #edeae4;
-            --border: #d5d0c8;
-            --text: #1a1816;
-            --text-muted: #6b6560;
-            --accent: #9e6b3a;
-            --accent-dim: #9e6b3a10;
-            --mono: 'JetBrains Mono', monospace;
-            --serif: 'DM Serif Display', serif;
-            --sans: 'DM Sans', sans-serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--sans);
-            font-size: 16px;
-            line-height: 1.65;
-            -webkit-font-smoothing: antialiased;
-        }
-        .noise {
-            position: fixed; inset: 0; z-index: 0; opacity: 0.025; pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            background-repeat: repeat; background-size: 256px 256px;
-        }
-        .container {
-            position: relative; z-index: 1;
-            max-width: 720px; margin: 0 auto; padding: 80px 24px 120px;
-        }
-        .header { margin-bottom: 64px; animation: fadeUp 0.6s ease both; }
-        .header h1 {
-            font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.2rem);
-            font-weight: 400; letter-spacing: -0.01em; margin-bottom: 8px;
-        }
-        .header .tagline {
-            font-family: var(--mono); font-size: 0.82rem; color: var(--accent);
-            letter-spacing: 0.04em; margin-bottom: 24px;
-        }
-        .header p {
-            color: var(--text-muted); font-size: 1.02rem; max-width: 580px; line-height: 1.7;
-        }
-        .links { display: flex; gap: 20px; margin-top: 24px; flex-wrap: wrap; }
-        .links a {
-            font-family: var(--mono); font-size: 0.78rem; color: var(--text-muted);
-            text-decoration: none; padding: 6px 14px; border: 1px solid var(--border);
-            border-radius: 4px; transition: all 0.25s ease; letter-spacing: 0.02em;
-        }
-        .links a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
-        .section { margin-bottom: 56px; animation: fadeUp 0.6s ease both; }
-        .section:nth-child(2) { animation-delay: 0.1s; }
-        .section:nth-child(3) { animation-delay: 0.15s; }
-        .section:nth-child(4) { animation-delay: 0.2s; }
-        .section-label {
-            font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase;
-            letter-spacing: 0.12em; color: var(--accent); margin-bottom: 24px;
-            padding-bottom: 8px; border-bottom: 1px solid var(--border);
-        }
-        .role {
-            margin-bottom: 32px; padding-left: 16px;
-            border-left: 2px solid var(--border); transition: border-color 0.3s ease;
-        }
-        .role:hover { border-left-color: var(--accent); }
-        .role-header {
-            display: flex; justify-content: space-between; align-items: baseline;
-            flex-wrap: wrap; gap: 8px; margin-bottom: 4px;
-        }
-        .role-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
-        .role-date {
-            font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted);
-            letter-spacing: 0.02em; white-space: nowrap;
-        }
-        .role-company { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; }
-        .role-desc { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-        .skill-tag {
-            font-family: var(--mono); font-size: 0.74rem; padding: 5px 12px;
-            background: var(--surface); border: 1px solid var(--border); border-radius: 3px;
-            color: var(--text-muted); transition: all 0.25s ease; letter-spacing: 0.01em;
-        }
-        .skill-tag:hover { color: var(--accent); border-color: var(--accent); }
-        .cta-block {
-            margin-top: 8px; padding: 24px; border: 1px solid var(--accent);
-            border-radius: 6px; background: var(--accent-dim); animation: fadeUp 0.6s ease 0.25s both;
-        }
-        .cta-block h3 { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 8px; color: var(--accent); }
-        .cta-block p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
-        footer {
-            margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--border);
-            font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.02em;
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 520px) {
-            .container { padding: 48px 16px 80px; }
-            .role-header { flex-direction: column; gap: 2px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manuel Rodriguez — Senior Backend Engineer</title>
+  <meta name="description" content="Senior Backend Engineer with 14+ years in distributed systems, from shipping Fallout 76 to designing policy orchestration at scale. Go, C++, gRPC, Temporal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+      --max-width: 680px;
+    }
+
+    /* Dark (default) */
+    :root, [data-theme="dark"] {
+      --bg: #0c0c0e;
+      --bg-surface: #141418;
+      --bg-elevated: #1c1c22;
+      --text-primary: #e8e6e1;
+      --text-secondary: #9a978f;
+      --text-muted: #5c5a54;
+      --accent: #c9a84c;
+      --accent-dim: #a08635;
+      --accent-glow: rgba(201, 168, 76, 0.08);
+      --border: #2a2a30;
+      --btn-text: #0c0c0e;
+    }
+
+    /* Light */
+    [data-theme="light"] {
+      --bg: #f8f7f4;
+      --bg-surface: #efeeeb;
+      --bg-elevated: #e6e5e1;
+      --text-primary: #1a1a1e;
+      --text-secondary: #55534d;
+      --text-muted: #8a8880;
+      --accent: #8b6914;
+      --accent-dim: #6e5310;
+      --accent-glow: rgba(139, 105, 20, 0.07);
+      --border: #d4d3cf;
+      --btn-text: #f8f7f4;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg: #f8f7f4;
+        --bg-surface: #efeeeb;
+        --bg-elevated: #e6e5e1;
+        --text-primary: #1a1a1e;
+        --text-secondary: #55534d;
+        --text-muted: #8a8880;
+        --accent: #8b6914;
+        --accent-dim: #6e5310;
+        --accent-glow: rgba(139, 105, 20, 0.07);
+        --border: #d4d3cf;
+        --btn-text: #f8f7f4;
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: 300;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 6rem 0 4rem;
+    }
+
+    section { margin-bottom: 4rem; }
+
+    /* --- Hero --- */
+    .hero { margin-bottom: 5rem; }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero .role {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero .intro {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    .hero .intro strong {
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+
+    .links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .links a {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .links a:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+    }
+
+    /* --- Section Headers --- */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 2rem;
+    }
+
+    /* --- Experience --- */
+    .role-entry { margin-bottom: 2.8rem; }
+    .role-entry:last-child { margin-bottom: 0; }
+    .role-entry.minor { margin-bottom: 2rem; }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .role-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .role-dates {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .role-company {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-dim);
+      margin-bottom: 0.8rem;
+    }
+
+    .role-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .role-tech {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+    }
+
+    /* --- Stack --- */
+    .stack-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .stack-tier {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .stack-tier-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+
+    .stack-tier-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .stack-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.7rem;
+      border-radius: 3px;
+    }
+
+    .stack-tag.primary {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+      background: var(--accent-glow);
+    }
+
+    /* --- CTA --- */
+    .cta-block {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      background: var(--bg-surface);
+    }
+
+    .cta-block h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .cta-block p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-block .contact-link {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--btn-text);
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .cta-block .contact-link:hover {
+      background: var(--accent-dim);
+    }
+
+    /* --- Divider --- */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 2rem 0;
+      opacity: 0.4;
+    }
+
+    /* --- Footer --- */
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* --- Theme Toggle --- */
+    .theme-toggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      padding: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-dim);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--text-secondary);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.2s;
+    }
+
+    .theme-toggle:hover svg {
+      stroke: var(--accent);
+    }
+
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon { display: none; }
+
+    /* Show moon in dark mode (click to go light) */
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: block; }
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: none; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) .theme-toggle .icon-sun { display: block; }
+      :root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: none; }
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      .container { padding: 3.5rem 0 3rem; }
+      .hero h1 { font-size: 1.9rem; }
+      .hero { margin-bottom: 3.5rem; }
+      .role-header { flex-direction: column; gap: 0.15rem; }
+      .stack-tier { flex-direction: column; gap: 0.5rem; }
+      .stack-tier-label { min-width: unset; }
+      .cta-block { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="noise"></div>
-    <div class="container">
 
-        <header class="header">
-            <h1>Manuel Rodriguez</h1>
-            <div class="tagline">Senior Backend Engineer</div>
-            <p>
-                14+ years building distributed systems across gaming and insurtech.
-                Shipped Fallout 76 at Bethesda, now designing policy lifecycle systems at Openly.
-                Passionate about solving hard infrastructure problems at scale.
-            </p>
-            <div class="links">
-                <a href="https://github.com/rdrsss" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/rdrsss" target="_blank">LinkedIn</a>
-                <a href="mailto:manuel.rdrs@email.com" target="_blank">Email</a>
-            </div>
-        </header>
+<div class="container">
 
-        <section class="section">
-            <div class="section-label">Experience</div>
-            <div class="role">
-                <div class="role-header">
-                    <span class="role-title">Senior Backend Engineer</span>
-                    <span class="role-date">2021 — Present</span>
-                </div>
-                <div class="role-company">Openly LLC · Policy Lifecycle Team</div>
-                <div class="role-desc">
-                    Implementing state-specific insurance policy rules across distributed microservices.
-                    Designing Temporal workflows for policy orchestration, coordinating cross-team data integration.
-                    Go, gRPC, Google Cloud Platform.
-                </div>
-            </div>
-            <div class="role">
-                <div class="role-header">
-                    <span class="role-title">Software Engineer</span>
-                    <span class="role-date"><!-- YOUR DATES --></span>
-                </div>
-                <div class="role-company">Bethesda Game Studios</div>
-                <div class="role-desc">
-                    Shipped Fallout 76 — backend services and real-time infrastructure
-                    supporting multiplayer systems at scale. C++, distributed systems, game server architecture.
-                </div>
-            </div>
-            <!-- ADD MORE ROLES AS NEEDED -->
-        </section>
-
-        <section class="section">
-            <div class="section-label">Technologies</div>
-            <div class="skills-grid">
-                <span class="skill-tag">Go</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">C++</span>
-                <span class="skill-tag">Rust</span>
-                <span class="skill-tag">gRPC</span>
-                <span class="skill-tag">Temporal</span>
-                <span class="skill-tag">Google Cloud</span>
-                <span class="skill-tag">Microservices</span>
-                <span class="skill-tag">Distributed Systems</span>
-                <span class="skill-tag">ML / AI</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Kubernetes</span>
-            </div>
-        </section>
-
-        <div class="cta-block">
-            <h3>Open to projects</h3>
-            <p>
-                Selectively available for consulting, contract work, and technical advisory —
-                particularly in distributed systems, backend architecture, and cloud infrastructure.
-                If you have an interesting problem, I'd enjoy hearing about it.
-            </p>
-        </div>
-
-        <footer>&copy; 2026 Manuel Rodriguez</footer>
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Manuel Rodriguez</h1>
+    <div class="role">Senior Backend Engineer</div>
+    <p class="intro">
+      Generalist programmer with roots in systems programming.
+      Over 14 years of professional experience across industries —
+      from <strong>games</strong> to <strong>insurtech</strong>.
+    </p>
+    <div class="links">
+      <a href="https://github.com/rdrsss">GitHub</a>
+      <a href="https://linkedin.com/in/rdrsss">LinkedIn</a>
+      <a href="mailto:manuel.rdrs@email.com">Email</a>
     </div>
+  </header>
+
+  <!-- Experience -->
+  <section>
+    <div class="section-label">Experience</div>
+
+    <div class="role-entry">
+      <div class="role-header">
+        <span class="role-title">Senior Backend Engineer</span>
+        <span class="role-dates">2022 — Present</span>
+      </div>
+      <div class="role-company">Openly LLC · Policy Lifecycle Team</div>
+      <p class="role-description">
+        Designing microservices powering policy workflows, underwriting,
+        and billing for an AI-driven homeowners insurance platform serving
+        30,000+ independent agents across 24 states. Building durable
+        Temporal workflows for policy orchestration and coordinating
+        cross-team data integration pipelines.
+      </p>
+      <div class="role-tech">Go · gRPC · GraphQL · Temporal · PostgreSQL · GCP</div>
+    </div>
+
+    <div class="role-entry">
+      <div class="role-header">
+        <span class="role-title">Backend Services Engineer</span>
+        <span class="role-dates">2018 — 2022</span>
+      </div>
+      <div class="role-company">Bethesda Game Studios</div>
+      <p class="role-description">
+        Shipped Fallout 76 — built and operated backend services and
+        real-time infrastructure supporting hundreds of thousands of
+        concurrent players. Helped retrofit the Creation Engine with
+        multiplayer networking derived from id Software's Quake netcode.
+        Maintained live services through years of ongoing content updates.
+      </p>
+      <div class="role-tech">Go · C++ · MongoDB · Redis · Python</div>
+    </div>
+
+    <div class="role-entry">
+      <div class="role-header">
+        <span class="role-title">Backend Services Engineer</span>
+        <span class="role-dates">2017 — 2018</span>
+      </div>
+      <div class="role-company">BattleCry Studios</div>
+      <p class="role-description">
+        Built Go microservices for multiplayer game infrastructure.
+        Studio was subsequently absorbed into Bethesda Game Studios
+        to support Fallout 76 development.
+      </p>
+      <div class="role-tech">Go · MongoDB</div>
+    </div>
+
+    <div class="role-entry">
+      <div class="role-header">
+        <span class="role-title">Programmer</span>
+        <span class="role-dates">2013 — 2017</span>
+      </div>
+      <div class="role-company">IllFonic</div>
+      <p class="role-description">
+        Backend and server programming for multiplayer titles including
+        Friday the 13th: The Game, Predator: Hunting Grounds, and the
+        Star Citizen FPS module. Built real-time game server infrastructure
+        on CryEngine from the ground up.
+      </p>
+      <div class="role-tech">C++ · Go · CryEngine · Riak · Redis</div>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="role-entry minor">
+      <div class="role-header">
+        <span class="role-title">Software Engineer</span>
+        <span class="role-dates">2012 — 2013</span>
+      </div>
+      <div class="role-company">Tent.is</div>
+      <p class="role-description">
+        Built a C++ client library for chunking and encrypting files
+        into a distributed datastore, plus Go web services —
+        protocol-level distributed systems work.
+      </p>
+      <div class="role-tech">C++ · Go · Distributed Storage</div>
+    </div>
+
+    <div class="role-entry minor">
+      <div class="role-header">
+        <span class="role-title">C++ Software Engineer</span>
+        <span class="role-dates">2011 — 2012</span>
+      </div>
+      <div class="role-company">Idea Fabrik PLC</div>
+      <p class="role-description">
+        Server development and services on HeroEngine — the MMO
+        platform that powered Star Wars: The Old Republic.
+      </p>
+      <div class="role-tech">C++ · HeroEngine · Oracle DB</div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section>
+    <div class="section-label">Stack</div>
+    <div class="stack-grid">
+      <div class="stack-tier">
+        <span class="stack-tier-label">Primary</span>
+        <div class="stack-tier-items">
+          <span class="stack-tag primary">Go</span>
+          <span class="stack-tag primary">C++</span>
+          <span class="stack-tag primary">gRPC</span>
+          <span class="stack-tag primary">Temporal</span>
+          <span class="stack-tag primary">GCP</span>
+        </div>
+      </div>
+      <div class="stack-tier">
+        <span class="stack-tier-label">Working</span>
+        <div class="stack-tier-items">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">MongoDB</span>
+          <span class="stack-tag">Redis</span>
+          <span class="stack-tag">Kubernetes</span>
+          <span class="stack-tag">Docker</span>
+        </div>
+      </div>
+      <div class="stack-tier">
+        <span class="stack-tier-label">Exploring</span>
+        <div class="stack-tier-items">
+          <span class="stack-tag">Rust</span>
+          <span class="stack-tag">ML / AI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="cta-block">
+      <h3>Available for select work</h3>
+      <p>
+        I take on consulting and contract engagements in distributed systems,
+        backend architecture, and cloud infrastructure. If you have a hard
+        problem and need someone who's shipped production systems at scale,
+        let's talk.
+      </p>
+      <a href="mailto:manuel.rdrs@email.com" class="contact-link">Get in touch</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Manuel Rodriguez
+  </footer>
+
+</div>
+
+<button class="theme-toggle" aria-label="Toggle theme">
+  <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<script>
+  (function() {
+    const root = document.documentElement;
+    const toggle = document.querySelector('.theme-toggle');
+    const stored = localStorage.getItem('theme');
+
+    // Apply stored preference
+    if (stored) {
+      root.setAttribute('data-theme', stored);
+    }
+
+    function currentTheme() {
+      const attr = root.getAttribute('data-theme');
+      if (attr) return attr;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    toggle.addEventListener('click', function() {
+      const next = currentTheme() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script>
+
 </body>
 </html>
